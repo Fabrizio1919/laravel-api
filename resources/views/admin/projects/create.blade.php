@@ -49,6 +49,19 @@
                             @endforeach
                         </select>
 
+
+                        <h5 class="mt-3">Technologies</h5>
+                        @foreach ($technologies as $technology)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="technologies" value="{{ $technology->id }}"
+                                    name="technologies[]"
+                                    {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="technologies">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach
+
+
+
                         <h5 class="pt-3">Immagine:</h5>
                         <input type="file" class="form-control" id="image" name="image">
 
