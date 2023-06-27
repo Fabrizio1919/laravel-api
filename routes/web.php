@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Mail\NewLead;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+
+
+Route::get('/mailable', function () {
+    $lead = Lead::find(1);
+    return new NewLead($lead);
 });
 
 Route::middleware('auth', 'verified')->prefix('admin')->name('admin.')->group(function () {
